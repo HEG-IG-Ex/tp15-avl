@@ -1,16 +1,49 @@
-public class Node {
-    int x;
-    int bf;
-    Node left;
-    Node right;
-    Node parent;
 
+public class Node<T extends Comparable<T>> {
 
-    public Node(int x){
-        this.x = x;
-    };
+    private Node<T> leftChild;
+    private Node<T> rightChild;
+    private T data;
+    // as all nodes are inserted as leafs, atheir height are by default 1
+    private int height = 1;
 
-    public void insert(int x){
+    public Node(T data) {
+        this.data = data;
+    }
+
+    public Node<T> getLeftChild() {
+        return leftChild;
+    }
+
+    public void setLeftChild(Node<T> leftChild) {
+        this.leftChild = leftChild;
+    }
+
+    public Node<T> getRightChild() {
+        return rightChild;
+    }
+
+    public void setRightChild(Node<T> rightChild) {
+        this.rightChild = rightChild;
+    }
+
+    public T getData() {
+        return data;
+    }
+
+    public void setData(T data) {
+        this.data = data;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    /*    public void insert(int x){
         int current = this.x;
 
         if(x<current){
@@ -46,7 +79,7 @@ public class Node {
             else
                 return false;
         }
-    }
+    }*/
 
 
 }

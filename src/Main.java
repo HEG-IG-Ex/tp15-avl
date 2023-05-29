@@ -3,6 +3,10 @@ import java.util.List;
 
 public class Main {
 
+    // SRC : BST : https://www.youtube.com/watch?v=zIX3zQP0khM
+    // SRC : AVL : https://www.youtube.com/watch?v=Jj9Mit24CWk
+    // SRC : Print2D : https://www.geeksforgeeks.org/print-binary-tree-2-dimensions/
+
     public static void main(String[] args) {
 	// write your code here
         List<Integer> list = new ArrayList<>();
@@ -14,7 +18,7 @@ public class Main {
         list.add(3);
         list.add(12);
 
-        Node avl = new Node(6);
+        AVLTree avl = new AVLTree<>(new Node<Integer>(6));
 
         for (Integer i :list) {
             avl.insert(i);
@@ -22,7 +26,14 @@ public class Main {
 
         //abr.search(12);
 
-        print2D(avl);
+        print2D(avl.getRoot());
+    }
+
+    // Wrapper over print2DUtil()
+    static void print2D(Node root)
+    {
+        // Pass initial space count as 0
+        print2DUtil(root, 0);
     }
 
     // Function to print binary tree in 2D
@@ -39,7 +50,7 @@ public class Main {
         space += COUNT;
 
         // Process right child first
-        print2DUtil(node.right, space);
+        print2DUtil(node.getRightChild(), space);
 
         // Print current node after space
         // count
@@ -47,16 +58,11 @@ public class Main {
         for (int i = COUNT; i < space; i++) {
             System.out.print(" ");
         }
-        System.out.print(node.x + "\n");
+        System.out.print(node.getData() + "\n");
 
         // Process left child
-        print2DUtil(node.left, space);
+        print2DUtil(node.getLeftChild(), space);
     }
 
-    // Wrapper over print2DUtil()
-    static void print2D(Node root)
-    {
-        // Pass initial space count as 0
-        print2DUtil(root, 0);
-    }
+
 }
